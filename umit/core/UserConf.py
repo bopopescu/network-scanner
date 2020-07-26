@@ -1694,7 +1694,7 @@ sg8
 I471
 asg10
 I01
-ssS'kerberos_master'
+ssS'kerberos_main'
 p256
 (dp257
 g4
@@ -7545,7 +7545,7 @@ ssS'remoteanything'
 p1698
 (dp1699
 g4
-S'neoworx remote-anything slave daemon'
+S'neoworx remote-anything subordinate daemon'
 p1700
 sg6
 I01
@@ -8615,11 +8615,11 @@ sg8
 I482
 asg10
 I00
-ssS'Trinoo_Master'
+ssS'Trinoo_Main'
 p1955
 (dp1956
 g4
-S'Trinoo distributed attack tool Master server control port'
+S'Trinoo distributed attack tool Main server control port'
 p1957
 sg6
 I00
@@ -10177,7 +10177,7 @@ ssS'Trinoo_Bcast'
 p2342
 (dp2343
 g4
-S'Trinoo distributed attack tool Master'
+S'Trinoo distributed attack tool Main'
 p2344
 sg6
 I01
@@ -14572,7 +14572,7 @@ p461
 asS'Lucent | ComOS || terminal server'
 p462
 (lp463
-S'Lucent Portmaster 4 running ComOS v4.0.3c2'
+S'Lucent Portmain 4 running ComOS v4.0.3c2'
 p464
 asS'Easytel | embedded || broadband router'
 p465
@@ -16518,7 +16518,7 @@ p1542
 asS'APC | embedded || power-device'
 p1543
 (lp1544
-S'APC MasterSwitch Network Power Controller'
+S'APC MainSwitch Network Power Controller'
 p1545
 aS'APC Network management Card AP9616'
 p1546
@@ -16606,7 +16606,7 @@ p1592
 asS'3Com | ComOS || terminal server'
 p1593
 (lp1594
-S'ComOS based terminal server - Livingston PortMaster or U.S. Robotics/3Com Total Control'
+S'ComOS based terminal server - Livingston PortMain or U.S. Robotics/3Com Total Control'
 p1595
 asS'Microsoft | Windows | 95/98/ME | general purpose'
 p1596

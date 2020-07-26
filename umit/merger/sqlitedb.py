@@ -188,13 +188,13 @@ class SqliteDBMerge(object):
         self._tocursor = old_cursor = old.cursor(_DictCursor)
 
         new_tables = new_cursor.execute(
-                "SELECT name FROM sqlite_master "
+                "SELECT name FROM sqlite_main "
                 "WHERE type='table'").fetchall()
         for table in new_tables:
             name = table['name']
             # Verify that this table is in the older db, or not
             old_table = old_cursor.execute(
-                    "SELECT name FROM sqlite_master "
+                    "SELECT name FROM sqlite_main "
                     "WHERE type='table' AND name=?", (name, )).fetchone()
 
             if old_table is None:
@@ -213,7 +213,7 @@ class SqliteDBMerge(object):
 
     def _merge_triggers(self, tablename):
         trigger_query = (
-                "SELECT name, sql FROM sqlite_master "
+                "SELECT name, sql FROM sqlite_main "
                 "WHERE type='trigger' AND tbl_name=?")
 
         res = self._fromcursor.execute(trigger_query, (tablename, )).fetchall()
@@ -287,7 +287,7 @@ class SqliteDBMerge(object):
             print "Adding new columns in table '%s'" % tablename
             # Get the full column definitions for this table
             res = self._fromcursor.execute(
-                    "SELECT sql FROM sqlite_master "
+                    "SELECT sql FROM sqlite_main "
                     "WHERE type='table' and name=?", (tablename, )).fetchone()
             coldef.update(column_definitions(res['sql']))
         for cname, cinfo in new_by_col.iteritems():
@@ -318,14 +318,14 @@ class SqliteDBMerge(object):
 
     def _create_table(self, tablename):
         res = self._fromcursor.execute(
-                "SELECT sql FROM sqlite_master "
+                "SELECT sql FROM sqlite_main "
                 "WHERE type='table' and name=?", (tablename, )).fetchone()
         self._tocursor.execute(res['sql'])
 
 
     def _create_triggers(self, tablename):
         res = self._fromcursor.execute(
-                "SELECT sql FROM sqlite_master "
+                "SELECT sql FROM sqlite_main "
                 "WHERE type='trigger' and tbl_name=?", (tablename, ))
         for result in res.fetchall():
             self._tocursor.execute(result['sql'])

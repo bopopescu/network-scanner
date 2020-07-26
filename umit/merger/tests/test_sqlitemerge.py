@@ -124,7 +124,7 @@ class ColumnMergeTest(Base):
         self.failUnlessEqual(len(old_table_info), len(new_table_info))
         self.failUnlessEqual(old_table_info, new_table_info)
         sql_query = (
-                "SELECT sql FROM sqlite_master "
+                "SELECT sql FROM sqlite_main "
                 "WHERE type='table' and NAME=?")
         self.failUnlessEqual(
                 self.new_cursor.execute(sql_query, (table, )).fetchone()[0],
@@ -169,7 +169,7 @@ class ColumnMergeTest(Base):
 class TriggersTest(Base):
 
     def _verify_merge(self):
-        triggers = "SELECT sql FROM sqlite_master WHERE type='trigger'"
+        triggers = "SELECT sql FROM sqlite_main WHERE type='trigger'"
         conn, cursor = conn_cursor(self.old_db_file.name)
         self.failUnlessEqual(
                 self.new_cursor.execute(triggers).fetchall(),
@@ -195,7 +195,7 @@ class TableCopyTest(Base):
         # Need to reconnect to get the updated table information.
         conn, cursor = conn_cursor(self.old_db_file.name)
 
-        query = "SELECT sql FROM sqlite_master WHERE name=? OR tbl_name=?"
+        query = "SELECT sql FROM sqlite_main WHERE name=? OR tbl_name=?"
         args = (table, table)
         self.failUnlessEqual(
                 cursor.execute(query, args).fetchall(),
